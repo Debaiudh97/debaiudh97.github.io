@@ -5,14 +5,15 @@ title: Home
 
 ## About Me
 
-I am a researcher specializing in [Your Field]. My work focuses on building scalable systems and exploring the intersection of [Topic A] and [Topic B]. 
+I am a researcher specializing in string phenomenlogy. My work focuses on building models and exploring the intersection of string theory with cosmology. 
 
-Currently, I am working on [Current Project] under the supervision of [Advisor's Name]. Prior to this, I completed my B.S. at [Previous University].
+Currently, I am working on moduli stabilization under the supervision of Dr. Pramod Kumar Shukla at Bose Institute. Prior to this, I completed my Int. MSc. at NISER.
 
 ## Research Interests
-*   Artificial Intelligence & Machine Learning
-*   Human-Computer Interaction
-*   Distributed Systems
+*   String Cosmology
+*   Black Holes in String Theory
+*   Conformal Field Theory
+*   Moduli Stabilization
 
 ## Recent Updates & Blog
 
