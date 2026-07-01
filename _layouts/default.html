@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db; /* A professional blue accent */
+            --bg: #fdfdfd;
+            --text: #333;
+            --card-bg: #ffffff;
+            --border: #e9ecef;
+        }
+
+        /* Automatic Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #ecf0f1;
+                --accent: #5dade2;
+                --bg: #121212;
+                --text: #e0e0e0;
+                --card-bg: #1e1e1e;
+                --border: #333;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        /* Elegant Sidebar */
+        .sidebar {
+            width: 350px;
+            background-color: var(--card-bg);
+            padding: 50px 40px;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .profile-img {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.15);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.25);
+        }
+
+        .sidebar h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            margin: 0 0 8px 0;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .sidebar h2 {
+            font-weight: 400;
+            font-size: 15px;
+            color: var(--text);
+            opacity: 0.7;
+            margin: 0 0 25px 0;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .contact-info {
+            width: 100%;
+            margin-top: 15px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-info a {
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 14px;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content Area */
+        .content {
+            flex: 1;
+            padding: 70px 90px;
+            max-width: 850px;
+            box-sizing: border-box;
+        }
+
+        .content h1, .content h2, .content h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-top: 45px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 16px;
+        }
+
+        /* Link styling for your markdown */
+        .content a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .content a:hover {
+            border-color: var(--accent);
+        }
+
+        /* Stylish Blog List */
+        .post-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .post-item {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .post-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .post-item a {
+            text-decoration: none;
+            border: none;
+        }
+
+        .post-date {
+            font-size: 13px;
+            color: var(--text);
+            opacity: 0.6;
+            display: block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .post-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .container { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 40px 20px;
+            }
+            .content { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <aside class="sidebar">
+        <!-- Profile Image linking to your assets folder -->
+        <img src="{{ '/assets/profile.jpg' | relative_url }}" alt="Profile Picture" class="profile-img">
+        
+        <!-- EDIT YOUR INFO HERE -->
+        <h1>Dr. Jane Smith</h1>
+        <h2>PhD Candidate in Computer Science<br>Stanford University</h2>
+        
+        <div class="contact-info">
+            <a href="mailto:your.email@university.edu">✉️ Email Me</a>
+            <a href="https://scholar.google.com/..." target="_blank">🎓 Google Scholar</a>
+            <a href="https://github.com/yourusername" target="_blank">💻 GitHub</a>
+            <a href="/assets/CV.pdf" target="_blank">📄 Download CV</a>
+        </div>
+    </aside>
+
+    <main class="content">
+        <!-- This variable injects the markdown from your index.md or posts -->
+        {{ content }}
+    </main>
+</div>
+
+</body>
+</html>
